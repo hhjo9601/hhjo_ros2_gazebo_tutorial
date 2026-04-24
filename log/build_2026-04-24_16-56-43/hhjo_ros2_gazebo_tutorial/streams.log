@@ -1,0 +1,24 @@
+[0.702s] Invoking command in '/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial': PYTHONPATH=/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/hhjo_ros2_gazebo_tutorial build --build-base /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/build install --record /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/install.log --single-version-externally-managed install_data
+[0.977s] running egg_info
+[0.994s] writing build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info/PKG-INFO
+[0.995s] writing dependency_links to build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info/dependency_links.txt
+[0.995s] writing requirements to build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info/requires.txt
+[0.995s] writing top-level names to build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info/top_level.txt
+[1.040s] reading manifest file 'build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info/SOURCES.txt'
+[1.042s] writing manifest file 'build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info/SOURCES.txt'
+[1.042s] running build
+[1.042s] running build_py
+[1.042s] copying hhjo_ros2_gazebo_tutorial/__init__.py -> /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/build/lib/hhjo_ros2_gazebo_tutorial
+[1.042s] running install
+[1.046s] running install_lib
+[1.065s] running install_data
+[1.065s] copying resource/hhjo_ros2_gazebo_tutorial -> /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/share/ament_index/resource_index/packages
+[1.065s] copying package.xml -> /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/share/hhjo_ros2_gazebo_tutorial
+[1.066s] copying launch/gazebo.launch.py -> /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/share/hhjo_ros2_gazebo_tutorial/launch
+[1.066s] copying launch/gazebo.launch.py -> /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/share/hhjo_ros2_gazebo_tutorial/launch
+[1.066s] running install_egg_info
+[1.084s] removing '/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/lib/python3.10/site-packages/hhjo_ros2_gazebo_tutorial-0.0.0-py3.10.egg-info' (and everything under it)
+[1.085s] Copying build/hhjo_ros2_gazebo_tutorial/hhjo_ros2_gazebo_tutorial.egg-info to /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/lib/python3.10/site-packages/hhjo_ros2_gazebo_tutorial-0.0.0-py3.10.egg-info
+[1.085s] running install_scripts
+[1.128s] writing list of installed files to '/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/install.log'
+[1.146s] Invoked command in '/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial' returned '0': PYTHONPATH=/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/install/hhjo_ros2_gazebo_tutorial/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base build/hhjo_ros2_gazebo_tutorial build --build-base /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/build install --record /home/vertin/ros_hhjo/exp_ws/src/hhjo_ros2_gazebo_tutorial/build/hhjo_ros2_gazebo_tutorial/install.log --single-version-externally-managed install_data

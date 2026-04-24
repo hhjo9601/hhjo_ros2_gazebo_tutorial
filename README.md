@@ -1,8 +1,9 @@
 
-# ROS2 Gazebo Tutorial (hhjo_ros_gazebo_tutorial)
+# ROS2 Gazebo Tutorial
 
 This repository demonstrates how to run a TurtleBot3 simulation in Gazebo using ROS2 Humble.
 
+---
 
 ## Prerequisites
 
@@ -30,6 +31,37 @@ sudo apt install -y \
   python3-vcstool
   ```
 
+---
+
+## Quick start
+
+Run Gazebo simulation:
+
+./scripts/run_01_gazebo.sh
+
+Run SLAM (mapping):
+
+./scripts/run_02_slam.sh
+
+---
+
+## Overview
+
+This project builds a simulation pipeline step-by-step:
+
+Gazebo → Sensor Data → SLAM → Map
+
+## Project Structure
+
+hhjo_ros2_gazebo_tutorial/
+├── launch/
+│   └── gazebo.launch.py
+├── scripts/
+│   ├── env.sh
+│   ├── run_01_gazebo.sh
+│   └── run_02_slam.sh
+
+---
 
 ## Timeline
 
@@ -55,4 +87,53 @@ Gazebo (TurtleBot3 Waffle)
 
 ---
 
+### 2. SLAM (Mapping)
 
+- Integrated slam_toolbox
+- Generated map (/map) from LiDAR data
+- Visualized map in RViz
+- Topics:
+  - /scan → /map
+  - /map
+  - /map_metadata
+
+Pipeline Structure:
+
+Gazebo → /scan → slam_toolbox → /map
+
+#### Run
+
+./scripts/run_02_slam.sh
+
+#### Control (optional)
+
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+---
+
+## Visualization
+
+### RViz Setup (SLAM)
+
+Fixed Frame → map
+
+Add:
+- Map → /map
+- LaserScan → /scan
+- TF
+
+---
+
+## What You Learn
+
+- Gazebo simulation with TurtleBot3
+- ROS2 sensor topics and data flow
+- SLAM (Simultaneous Localization and Mapping)
+- RViz-based visualization
+- Basic autonomous robotics pipeline
+
+---
+
+## License
+
+MIT License
