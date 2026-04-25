@@ -43,16 +43,73 @@ Run SLAM (mapping):
 
 ./scripts/run_02_slam.sh
 
+Run Navigation:
+
+./scripts/run_03_nav2.sh
+
 ---
 
 ## Overview
 
 This project builds a simulation pipeline step-by-step:
 
-Gazebo → Sensor Data → SLAM → Map
+## Overview
+
+This project builds a simulation pipeline step-by-step with explicit ROS2 nodes and topics:
+
+```text
+Gazebo (simulation)
+    ↓
+[ gazebo_ros / turtlebot3 nodes ]
+    ↓ publish
+/scan        /odom        /tf
+    ↓
+[ slam_toolbox node ]
+    ↓ subscribe: /scan, /tf
+    ↓ publish
+/map
+    ↓
+[ nav2 (navigation stack) ]
+    ↓ subscribe: /map, /odom, /tf
+    ↓ publish
+/cmd_vel
+    ↓
+[ robot controller ]
+    ↓
+Robot Movement
+```
+
+### Key Topics
+
+- `/scan` → LiDAR sensor data  
+- `/odom` → Odometry (robot position estimate)  
+- `/tf` → Coordinate transforms  
+- `/map` → Generated map from SLAM  
+- `/cmd_vel` → Velocity command (linear / angular)
+
+### Node Responsibilities
+
+- **Gazebo / TurtleBot3**
+  - Simulates robot and sensors
+  - Publishes `/scan`, `/odom`, `/tf`
+
+- **slam_toolbox**
+  - Builds a map using LiDAR data
+  - Subscribes to `/scan`, `/tf`
+  - Publishes `/map`
+
+- **Nav2 (Navigation2)**
+  - Path planning and control
+  - Subscribes to `/map`, `/odom`, `/tf`
+  - Publishes `/cmd_vel`
+
+- **Robot Controller**
+  - Executes movement commands
+  - Subscribes to `/cmd_vel`
 
 ## Project Structure
 
+```text
 hhjo_ros2_gazebo_tutorial/
 ├── launch/
 │   └── gazebo.launch.py
@@ -60,6 +117,8 @@ hhjo_ros2_gazebo_tutorial/
 │   ├── env.sh
 │   ├── run_01_gazebo.sh
 │   └── run_02_slam.sh
+│   └── run_03_nav2.sh
+```
 
 ---
 
@@ -79,11 +138,16 @@ hhjo_ros2_gazebo_tutorial/
 Pipeline Structure:
 
 ```text
-Gazebo (TurtleBot3 Waffle)
-            ↓
-   Sensor Topics
- (/scan, /odom, /tf)
+[ gazebo_ros / turtlebot3 nodes ]
+    ↓ publish
+/scan        /odom        /tf
+    ↓
+(available to other nodes)
 ```
+
+#### Run
+
+./scripts/run_02_slam.sh
 
 ---
 
@@ -99,7 +163,16 @@ Gazebo (TurtleBot3 Waffle)
 
 Pipeline Structure:
 
-Gazebo → /scan → slam_toolbox → /map
+```text
+[ gazebo_ros ]
+    ↓ publish
+/scan        /tf
+    ↓
+[ slam_toolbox node ]
+    ↓ subscribe: /scan, /tf
+    ↓ publish
+/map
+```
 
 #### Run
 
@@ -111,9 +184,39 @@ ros2 run teleop_twist_keyboard teleop_twist_keyboard
 
 ---
 
+### 3. Navigation (Nav2)
+
+- Goal-based autonomous navigation using Nav2
+- Robot moves to target positions using `/cmd_vel`
+
+Pipeline Structure:
+
+```text
+[ slam_toolbox ]
+    ↓ publish
+/map
+    ↓
+[ nav2 stack ]
+    ↓ subscribe: /map, /odom, /tf
+    ↓ publish
+/cmd_vel
+    ↓
+[ robot controller ]
+    ↓
+Robot Movement
+```
+
+#### Run
+
+```bash
+./scripts/run_03_nav2.sh
+```
+
+---
+
 ## Visualization
 
-### RViz Setup (SLAM)
+### RViz Setup (SLAM + Nav2)
 
 Fixed Frame → map
 
@@ -121,6 +224,16 @@ Add:
 - Map → /map
 - LaserScan → /scan
 - TF
+- RobotModel
+- Path
+- Global Costmap
+- Local Costmap
+
+Navigation:
+- Use `2D Goal Pose` in RViz
+- Select a target position on the map
+- Nav2 generates a path and publishes `/cmd_vel`
+- TurtleBot3 moves toward the goal
 
 ---
 
@@ -129,7 +242,9 @@ Add:
 - Gazebo simulation with TurtleBot3
 - ROS2 sensor topics and data flow
 - SLAM (Simultaneous Localization and Mapping)
-- RViz-based visualization
+- Nav2 goal-based navigation
+- RViz-based map and navigation visualization
+- Relationship between `/map`, `/tf`, `/odom`, and `/cmd_vel`
 - Basic autonomous robotics pipeline
 
 ---

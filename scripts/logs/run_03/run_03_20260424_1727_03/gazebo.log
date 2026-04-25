@@ -1,0 +1,39 @@
+[INFO] [launch]: All log files can be found below /home/vertin/.ros/log/2026-04-24-17-27-03-936138-vertin-VivoBook-ASUSLaptop-X412FL-X412FL-563789
+[INFO] [launch]: Default logging verbosity is set to INFO
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+urdf_file_name : turtlebot3_waffle.urdf
+[INFO] [gzserver-1]: process started with pid [563867]
+[INFO] [gzclient-2]: process started with pid [563869]
+[INFO] [robot_state_publisher-3]: process started with pid [563871]
+[INFO] [spawn_entity.py-4]: process started with pid [563873]
+[robot_state_publisher-3] [INFO] [1777019226.073569971] [robot_state_publisher]: got segment base_footprint
+[robot_state_publisher-3] [INFO] [1777019226.073673221] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-3] [INFO] [1777019226.073684262] [robot_state_publisher]: got segment base_scan
+[robot_state_publisher-3] [INFO] [1777019226.073689309] [robot_state_publisher]: got segment camera_depth_frame
+[robot_state_publisher-3] [INFO] [1777019226.073693904] [robot_state_publisher]: got segment camera_depth_optical_frame
+[robot_state_publisher-3] [INFO] [1777019226.073698460] [robot_state_publisher]: got segment camera_link
+[robot_state_publisher-3] [INFO] [1777019226.073702914] [robot_state_publisher]: got segment camera_rgb_frame
+[robot_state_publisher-3] [INFO] [1777019226.073707371] [robot_state_publisher]: got segment camera_rgb_optical_frame
+[robot_state_publisher-3] [INFO] [1777019226.073711967] [robot_state_publisher]: got segment caster_back_left_link
+[robot_state_publisher-3] [INFO] [1777019226.073716329] [robot_state_publisher]: got segment caster_back_right_link
+[robot_state_publisher-3] [INFO] [1777019226.073720721] [robot_state_publisher]: got segment imu_link
+[robot_state_publisher-3] [INFO] [1777019226.073725163] [robot_state_publisher]: got segment wheel_left_link
+[robot_state_publisher-3] [INFO] [1777019226.073729790] [robot_state_publisher]: got segment wheel_right_link
+[spawn_entity.py-4] [INFO] [1777019226.450473879] [spawn_entity]: Spawn Entity started
+[spawn_entity.py-4] [INFO] [1777019226.450824061] [spawn_entity]: Loading entity XML from file /opt/ros/humble/share/turtlebot3_gazebo/models/turtlebot3_waffle/model.sdf
+[spawn_entity.py-4] [INFO] [1777019226.451588958] [spawn_entity]: Waiting for service /spawn_entity, timeout = 30
+[spawn_entity.py-4] [INFO] [1777019226.451850575] [spawn_entity]: Waiting for service /spawn_entity
+[spawn_entity.py-4] [INFO] [1777019227.206152842] [spawn_entity]: Calling service /spawn_entity
+[gzserver-1] [INFO] [1777019227.421951311] [turtlebot3_imu]: <initial_orientation_as_reference> is unset, using default value of false to comply with REP 145 (world as orientation reference)
+[spawn_entity.py-4] [INFO] [1777019227.524449084] [spawn_entity]: Spawn status: SpawnEntity: Successfully spawned entity [waffle]
+[INFO] [spawn_entity.py-4]: process has finished cleanly [pid 563873]
+[gzserver-1] [INFO] [1777019228.028787592] [camera_driver]: Publishing camera info to [/camera/camera_info]
+[gzserver-1] [INFO] [1777019228.154394044] [turtlebot3_diff_drive]: Wheel pair 1 separation set to [0.287000m]
+[gzserver-1] [INFO] [1777019228.154462236] [turtlebot3_diff_drive]: Wheel pair 1 diameter set to [0.066000m]
+[gzserver-1] [INFO] [1777019228.156315022] [turtlebot3_diff_drive]: Subscribed to [/cmd_vel]
+[gzserver-1] [INFO] [1777019228.160341314] [turtlebot3_diff_drive]: Advertise odometry on [/odom]
+[gzserver-1] [INFO] [1777019228.164104369] [turtlebot3_diff_drive]: Publishing odom transforms between [odom] and [base_footprint]
+[gzserver-1] [INFO] [1777019228.177608360] [turtlebot3_joint_state]: Going to publish joint [wheel_left_joint]
+[gzserver-1] [INFO] [1777019228.177648043] [turtlebot3_joint_state]: Going to publish joint [wheel_right_joint]
+[INFO] [gzclient-2]: process has finished cleanly [pid 563869]
