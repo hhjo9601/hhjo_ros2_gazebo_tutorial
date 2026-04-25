@@ -51,10 +51,6 @@ Run Navigation:
 
 ## Overview
 
-This project builds a simulation pipeline step-by-step:
-
-## Overview
-
 This project builds a simulation pipeline step-by-step with explicit ROS2 nodes and topics:
 
 ```text
@@ -147,7 +143,7 @@ Pipeline Structure:
 
 #### Run
 
-./scripts/run_02_slam.sh
+./scripts/run_01_gazebo.sh
 
 ---
 
@@ -234,6 +230,58 @@ Navigation:
 - Select a target position on the map
 - Nav2 generates a path and publishes `/cmd_vel`
 - TurtleBot3 moves toward the goal
+
+---
+
+### 4. Save Map
+
+- Saved the generated SLAM map to local files
+- Separated map saving from SLAM execution because mapping is an interactive process
+- Supports both quick testing and manual mapping with teleop
+- Output files:
+  - `maps/my_map.yaml`
+  - `maps/my_map.pgm`
+
+Pipeline Structure:
+
+```text
+slam_toolbox
+    ↓ publish
+/map
+    ↓
+map_saver_cli
+    ↓ save
+maps/my_map.yaml
+maps/my_map.pgm
+```
+
+#### Run
+
+First, run SLAM:
+
+```bash
+./scripts/run_02_slam.sh
+```
+
+Then choose one of the following options.
+
+Option A: Quick test without manual movement
+
+```text
+In simple Gazebo worlds, a partial map may be generated from the initial LiDAR scan.
+```
+
+Option B: Move the robot with teleop
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+```
+
+After the map is sufficiently generated, open another terminal and run:
+
+```bash
+./scripts/run_04_save_map.sh
+```
 
 ---
 
