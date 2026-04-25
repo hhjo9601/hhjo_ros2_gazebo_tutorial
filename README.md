@@ -285,6 +285,137 @@ After the map is sufficiently generated, open another terminal and run:
 
 ---
 
+### 5. Localization + Navigation (AMCL)
+
+- Used saved map instead of live SLAM
+- Performed localization using AMCL
+- Executed goal-based navigation using Nav2
+- Required initial pose estimation in RViz
+
+---
+
+### Concept
+
+In this step, SLAM is no longer used.
+
+Instead of generating a map in real-time, the system uses a previously saved map:
+
+- `maps/my_map.yaml`
+- `maps/my_map.pgm`
+
+AMCL (Adaptive Monte Carlo Localization) estimates the robot’s current pose by matching:
+
+- Stored map (past information)
+- Current LiDAR scan (`/scan`)
+- Odometry (`/odom`)
+
+---
+
+### Pipeline Structure
+
+```text
+maps/my_map.yaml
+    ↓
+[ map_server ]
+    ↓ publish
+/map
+    ↓
+[ amcl node ]
+    ↓ subscribe: /map, /scan, /odom, /tf
+    ↓ publish
+/amcl_pose
+    ↓
+[ nav2 stack ]
+    ↓ publish
+/cmd_vel
+    ↓
+Robot Movement
+```
+
+---
+
+### Key Topics
+
+- `/map` → Static map loaded from file  
+- `/scan` → Current LiDAR sensor data  
+- `/odom` → Odometry (motion estimation)  
+- `/amcl_pose` → Estimated robot pose  
+- `/cmd_vel` → Velocity command  
+
+---
+
+### Run
+
+```bash
+./scripts/run_05_amcl_nav2.sh
+```
+
+---
+
+### RViz Setup
+
+Fixed Frame → map
+
+Add:
+- Map → /map
+- LaserScan → /scan
+- TF
+- RobotModel
+- Path
+
+---
+
+### Usage
+
+1. Initialize robot pose:
+   - Click `2D Pose Estimate` in RViz
+   - Set the robot’s approximate starting position
+
+2. Send navigation goal:
+   - Click `2D Goal Pose`
+   - Select a target position on the map
+
+3. Observe behavior:
+   - Nav2 generates a path
+   - `/cmd_vel` is published
+   - Robot moves toward the goal
+
+---
+
+### Notes
+
+- If the robot does not move:
+  - Initial pose is not set (most common issue)
+
+- If the map is not visible:
+  - Check `Fixed Frame = map`
+
+- Make sure `use_sim_time` is enabled
+
+---
+
+### Difference from SLAM
+
+| Feature        | SLAM Mode            | AMCL Mode             |
+|---------------|---------------------|----------------------|
+| Map           | Generated in real-time | Loaded from file     |
+| Node          | slam_toolbox        | amcl + map_server    |
+| Purpose       | Mapping + Localization | Localization only   |
+| Use case      | First-time mapping  | Reusing known map    |
+
+---
+
+### Summary
+
+- SLAM creates a map  
+- Map is saved to files  
+- AMCL uses the saved map to estimate position  
+- Nav2 uses that position to navigate  
+
+This step represents a typical real-world robotics setup.
+
+---
+
 ## What You Learn
 
 - Gazebo simulation with TurtleBot3
